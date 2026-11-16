@@ -1,3 +1,33 @@
+// Cole aqui o código SHA-256 gerado no Passo 1 (o exemplo abaixo é a senha "admin")
+const SENHA_HASH = "eea3923b79b693ffe33a8cbadbddc16a968e210bb4c2bbb32ccdf6b4968396c6";
+
+async function gerarHash(texto) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(texto);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+// Mantém desbloqueado na sessão atual do navegador
+if (sessionStorage.getItem("prospecta_auth") === "ok") {
+  document.getElementById("lockScreen").style.display = "none";
+}
+
+document.getElementById("unlockForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const digitada = document.getElementById("passwordInput").value;
+  const hashDigitada = await gerarHash(digitada);
+
+  if (hashDigitada === SENHA_HASH) {
+    sessionStorage.setItem("prospecta_auth", "ok");
+    document.getElementById("lockScreen").style.display = "none";
+  } else {
+    document.getElementById("lockError").textContent = "Senha incorreta.";
+  }
+});
+
 let leads = JSON.parse(localStorage.getItem("prospecta_leads")) || [];
 let leadSelecionado = null;
 

@@ -268,3 +268,45 @@ textarea {
   text-align: center;
   padding: 16px 0;
 }
+
+.lock-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lock-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.lock-card h2 {
+  margin-bottom: 6px;
+}
+
+.lock-card h2 span {
+  color: var(--primary);
+}
+
+.lock-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.lock-error {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  color: #f87171;
+}
