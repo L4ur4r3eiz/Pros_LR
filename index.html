@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prospecta LP • Central de Prospecção</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-content">
+      <h1>Prospecta <span>LP</span></h1>
+      <p>Garimpo rápido, prompt inteligente por nicho e abordagem no WhatsApp</p>
+    </div>
+  </header>
+
+  <main class="container grid-layout">
+    <!-- COLUNA 1: BUSCA E CADASTRO -->
+    <section class="stack">
+      <!-- Card 1: Gerador de Busca -->
+      <div class="card">
+        <h2>1. Garimpar Clientes</h2>
+        <div class="form-row">
+          <div class="field">
+            <label for="searchNicho">Nicho</label>
+            <input type="text" id="searchNicho" placeholder="Ex: Hamburgueria, Pet Shop" />
+          </div>
+          <div class="field">
+            <label for="searchCidade">Cidade</label>
+            <input type="text" id="searchCidade" placeholder="Ex: Ribeirão Pires" />
+          </div>
+        </div>
+
+        <div class="search-buttons">
+          <button type="button" class="btn btn-outline" onclick="abrirBusca('linktr.ee')">
+            🔍 Buscar só com Linktree
+          </button>
+          <button type="button" class="btn btn-outline" onclick="abrirBusca('instagram.com')">
+            📸 Buscar só Instagram
+          </button>
+          <button type="button" class="btn btn-outline" onclick="abrirBusca('maps')">
+            📍 Buscar no Google Maps
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: Salvar Lead -->
+      <div class="card">
+        <h2>2. Adicionar Lead Encontrado</h2>
+        <form id="leadForm" class="stack-sm">
+          <div class="form-row">
+            <div class="field">
+              <label for="leadNome">Nome da Empresa *</label>
+              <input type="text" id="leadNome" required placeholder="Ex: Pet Amigo" />
+            </div>
+            <div class="field">
+              <label for="leadNicho">Categoria / Nicho *</label>
+              <select id="leadNicho" required>
+                <option value="hamburgueria">Hamburgueria / Pizzaria / Delivery</option>
+                <option value="doceria">Doceria / Confeitaria / Açaí</option>
+                <option value="petshop">Pet Shop / Clínica Veterinária</option>
+                <option value="estetica">Estética / Salão / Barbearia / Tattoo</option>
+                <option value="saude">Dentista / Psicólogo / Clínica Saúde</option>
+                <option value="automotivo">Estética Automotiva / Oficina</option>
+                <option value="outro">Outro Nicho (Geral)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="leadWhatsapp">WhatsApp (com DDD) *</label>
+              <input type="text" id="leadWhatsapp" required placeholder="Ex: 11999999999" />
+            </div>
+            <div class="field">
+              <label for="leadCor">Paleta de Cores (Opcional)</label>
+              <input type="text" id="leadCor" placeholder="Ex: Azul e Amarelo" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="leadCustomNicho">Detalhe extra (opcional — ex: "Banho e Tosa", "Smash Burger")</label>
+            <input type="text" id="leadCustomNicho" placeholder="Deixe em branco para usar o padrão do nicho" />
+          </div>
+
+          <button type="submit" class="btn btn-primary">+ Salvar Lead na Lista</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- COLUNA 2: LISTA DE LEADS E GERADOR -->
+    <section class="stack">
+      <!-- Card 3: Lista de Leads -->
+      <div class="card">
+        <div class="card-header">
+          <h2>3. Meus Leads (<span id="leadCount">0</span>)</h2>
+        </div>
+        <div id="leadsList" class="leads-list">
+          <p class="empty-msg">Nenhum lead salvo ainda. Use a busca ao lado para começar.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Gerador de Prompt e Mensagem -->
+      <div class="card" id="generatorBox" style="display: none;">
+        <h2 id="selectedLeadTitle">Gerador para: —</h2>
+
+        <div class="field">
+          <label>Prompt Universal (para qualquer IA criar o site)</label>
+          <textarea id="outputPrompt" rows="9" readonly></textarea>
+          <button type="button" class="btn btn-primary btn-sm" onclick="copiarTexto('outputPrompt', this)">
+            📋 Copiar Prompt Completo
+          </button>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="field">
+          <label for="previewLink">Cole aqui o link da prévia (depois de gerar)</label>
+          <input type="text" id="previewLink" placeholder="Ex: https://seu-site.vercel.app" oninput="atualizarMensagem()" />
+        </div>
+
+        <div class="field">
+          <label>Mensagem de Abordagem (WhatsApp)</label>
+          <textarea id="outputMensagem" rows="6" readonly></textarea>
+          <div class="action-row">
+            <button type="button" class="btn btn-outline btn-sm" onclick="copiarTexto('outputMensagem', this)">
+              📋 Copiar Mensagem
+            </button>
+            <a id="btnAbrirWhats" href="#" target="_blank" class="btn btn-whatsapp btn-sm">
+              💬 Abrir WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
