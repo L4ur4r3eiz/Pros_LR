@@ -31,7 +31,7 @@ document.getElementById("unlockForm").addEventListener("submit", async function 
 });
 
 // ==========================================
-// 2. CONFIGURAÇÃO ESTRATÉGICA POR NICHO
+// 2. DIREÇÃO DE ARTE POR NICHO (ANTI-TEMPLATE)
 // ==========================================
 let leads = JSON.parse(localStorage.getItem("prospecta_leads")) || [];
 let leadSelecionado = null;
@@ -39,106 +39,116 @@ let leadSelecionado = null;
 const NICHOS_CONFIG = {
   hamburgueria: {
     titulo: "Hamburgueria / Pizzaria / Delivery Gastronômico",
-    publico: "Consumidores locais que buscam praticidade, agilidade no pedido pelo celular e experiência gastronômica marcante.",
-    direcaoArte: "Estética gastronômica contemporânea e envolvente, com atmosfera urbana/artesanal, contraste elevado para destacar fotografias de alimentos em alta resolução, iluminação quente e sensação de apetite imediato.",
-    tipografia: "Títulos display com personalidade forte e impacto (ex: Oswald, Plus Jakarta Sans Bold ou Syne) combinados com fonte limpa e de leitura instantânea para preços e descrições (ex: Inter ou DM Sans).",
-    arquitetura: `1. Header Flutuante Minimalista: Logotipo em destaque, links rápidos (Cardápio, Diferenciais, Localização) e badge interativo mostrando a quantidade de itens no carrinho.
-2. Hero Section de Alto Impacto: Composição assimétrica com headline persuasiva focada no sabor artesanal, subtítulo curto, botão primário "Montar Meu Pedido" (scroll suave para o cardápio) e destaque visual fotográfico com profundidade.
-3. Cardápio Interativo com Montagem de Pedido: Dividido por abas ou categorias claras (Destaques da Casa, Artesanais, Acompanhamentos, Bebidas). Cada card possui foto ilustrativa de alta qualidade, descrição sensorial dos ingredientes, preço legível e controles táteis de "+" e "-" com feedback visual imediato.
-4. Barra de Checkout Fixa (Mobile & Desktop): Aparece dinamicamente assim que o cliente adiciona o primeiro item, exibindo subtotal em tempo real, campo opcional para observações (ex: ponto da carne/retirar ingrediente) e botão de conversão "Finalizar Pedido no WhatsApp".
-5. Seção "Por que pedir direto conosco": Grid em bento-box destacando preparo na hora, entrega ágil e vantagem de pedir sem taxas extras de aplicativos.
-6. Footer Completo: Horário de funcionamento, área de entrega, endereço e botão flutuante discreto do WhatsApp.`,
-    diferencialCriativo: "Simulador de Pedido Instantâneo integrado à página: ao adicionar itens no cardápio, o sistema calcula automaticamente o valor total e compila um resumo formatado (itens, quantidades, observações e total) que abre diretamente o WhatsApp da empresa pronto para envio.",
-    abordagem: "onde o cliente monta o pedido no celular e ele já chega mastigado no WhatsApp de vocês (sem taxa de aplicativo)"
+    publico: "Consumidores locais exigentes que buscam sabor artesanal, transparência nos ingredientes e agilidade absoluta para pedir pelo celular sem taxas de aplicativos.",
+    conceitoCriativo: "Editorial Gastronômico Urbano: tratar o cardápio como uma publicação culinária contemporânea, substituindo o visual genérico de 'fast-food cheio de ícones' por fotografia macro dramática, tipografia condensada de alto impacto e ritmo de leitura em colunas.",
+    direcaoArte: "Linguagem modular e editorial com alto contraste. Superfícies foscas profundas (estilo carvão ou papel texturizado escuro), linhas divisórias finas (1px) estruturando os itens do menu, cantos retos ou levemente chanfrados (border-radius máximo de 4px a 6px) e total ausência de sombras neon ou gradientes artificiais.",
+    tipografia: "Títulos em display condensado ou grotesco expressivo em caixa alta/mista (ex: Syne ou Oswald) com tracking ajustado, contrastando com uma sans-serif técnica limpa (ex: Plus Jakarta Sans ou Inter) para descrições de ingredientes e valores alinhados em tabular-nums.",
+    secoesDetalhadas: `1. Header Compacto e Funcional: Logotipo à esquerda, navegação mínima (Cardápio, Origem, Horários) e indicador numérico discreto da sacola de pedidos à direita.
+2. Hero Section Assimétrica de Grande Escala: Composição dividida em proporção 60/40 — título editorial de grande impacto posicionado com respiro assimétrico, proposta de valor direta sobre preparo artesanal e pedido direto, acompanhada de fotografia gastronômica sangrada até a borda com recorte geométrico limpo.
+3. Manifesto da Cozinha (Bloco Editorial Horizontal): Faixa de contraste alternado explicando o preparo na brasa/chapa, seleção de insumos e o benefício de pedir direto sem intermediários, usando numeração editorial (01, 02, 03) em vez de caixas com ícones genéricos.
+4. Cardápio Interativo Estruturado em Lista Editorial & Módulos: Navegação por categorias em abas limpas. Em vez de repetir o mesmo card arredondado em tudo, combine destaques principais com fotografia em proporção 4:5 e itens complementares em linhas divisórias horizontais elegantes com controles táteis minimalistas de "+" e "-".
+5. Gaveta / Barra de Fechamento Inteligente: Fixada de forma discreta na base da tela apenas quando há itens selecionados, exibindo resumo claro, campo opcional de observação (ponto/retirada) e botão retangular de alta legibilidade para disparar o pedido formatado no WhatsApp.
+6. Footer Arquitetônico: Grid assimétrico com endereço, raio de entrega, horários de funcionamento e link direto para o WhatsApp.`,
+    tratamentoImagens: "Fotografias gastronômicas naturais com iluminação lateral quente e profundidade de campo curta, integradas diretamente ao grid sem molduras pesadas. Utilizar fotos ilustrativas coerentes de alta resolução sem atribuir autoria falsa.",
+    diferencialCriativo: "Comanda Digital Integrada ao Grid Editorial: o cliente monta seu pedido diretamente nas linhas do cardápio e o sistema compila uma mensagem estruturada (itens, quantidades, observações e total) pronta para envio imediato no WhatsApp.",
+    abordagem: "onde o cliente monta o pedido direto no celular e ele já chega mastigado no WhatsApp de vocês (sem taxa de aplicativo)"
   },
 
   doceria: {
     titulo: "Doceria / Confeitaria Artesanal",
-    publico: "Clientes que buscam sobremesas gourmet, presentes afetivos e bolos/doces sob encomenda com apresentação impecável.",
-    direcaoArte: "Estética sensorial, sofisticada e acolhedora, com composição editorial limpa, amplo uso de espaço negativo, bordas suaves, sombras difusas e destaque absoluto para texturas e detalhes dos doces.",
-    tipografia: "Combinação editorial elegante entre serifada moderna para títulos (ex: Playfair Display ou Cormorant Garamond) e sans-serif geométrica limpa para descrições e preços (ex: Plus Jakarta Sans).",
-    arquitetura: `1. Header Editorial Limpo: Identidade da marca centralizada ou alinhada à esquerda, navegação objetiva (Vitrine, Encomendas, Sobre, Contato) e botão de pedido rápido.
-2. Hero Section Sensorial: Título emotivo destacando o preparo artesanal, subtítulo convidativo, CTA "Explorar Cardápio" e composição visual elegante com fotografia macro de confeitaria.
-3. Vitrine Interativa de Sabores e Encomendas: Cards refinados com foto, descrição dos ingredientes selecionados, seleção de tamanho/unidade e botões "+" e "-" para montar uma sacola de pedido ou orçamento de festa.
-4. Resumo Inteligente de Encomenda: Barra inferior discreta que soma os itens escolhidos e permite enviar o pedido estruturado direto para o WhatsApp.
-5. Seção de Experiência & Encomendas Personalizadas: Explicação visual de como funciona o prazo de encomenda, embalagens para presente e retirada/entrega.
-6. Footer Sofisticado: Horários de atendimento, endereço, links sociais e acesso direto ao WhatsApp.`,
-    diferencialCriativo: "Montador de Caixa / Encomenda Personalizada com cálculo automático e envio direto para o WhatsApp, eliminando a troca demorada de tabelas em PDF no atendimento.",
+    publico: "Clientes que valorizam confeitaria autoral, estética refinada para presentes e encomendas sob medida com atendimento ágil.",
+    conceitoCriativo: "Lookbook de Confeitaria Editorial: estética inspirada em revistas de gastronomia e design contemporâneo, onde cada doce é apresentado com espaço negativo generoso, tipografia serifada elegante e ritmo visual pausado.",
+    direcaoArte: "Minimalismo sensorial com calor humano. Fundos em tons naturais (off-white, creme quente ou cacau profundo), bordas nítidas ou raios mínimos (2px–4px), divisórias finas e foco total na textura dos ingredientes.",
+    tipografia: "Combinação clássica contemporânea: serifada de alto contraste para títulos principais (ex: Cormorant Garamond ou Playfair Display) pareada com sans-serif humanista leve (ex: DM Sans) para descrições e preços.",
+    secoesDetalhadas: `1. Header Editorial Minimalista: Marca posicionada com respiro superior, links discretos (Vitrine, Sob Encomenda, Atelier, Contato) e contador sutil da sacola.
+2. Hero Section com Composição Modular: Fotografia macro ocupando grande área vertical à direita sobreposta parcialmente por um bloco tipográfico limpo à esquerda com headline sensorial e CTA direto para o catálogo.
+3. Vitrine Interativa de Sabores e Encomendas: Layout alternando blocos assimétricos — doces assinatura com fotos em proporção vertical e seletores de quantidade/tamanho ("+" e "-") integrados discretamente abaixo da descrição.
+4. Módulo de Encomendas Personalizadas: Bloco horizontal de cor contrastante explicando prazos de produção, embalagens para presente e retirada/entrega, sem inventar avaliações ou números falsos.
+5. Barra de Resumo de Pedido: Exibe os itens escolhidos, soma o valor total automaticamente e gera a mensagem organizada para envio direto no WhatsApp.
+6. Footer Limpo: Horários de atendimento, endereço do ponto de retirada e contato direto.`,
+    tratamentoImagens: "Fotografia natural com luz difusa valorizando texturas (chocolate, frutas, massas), alternando recortes verticais e quadrados integrados ao layout.",
+    diferencialCriativo: "Montador de Caixa & Encomenda Sob Medida: permite combinar sabores e tamanhos na própria vitrine e enviar a lista formatada direto para o WhatsApp da confeitaria.",
     abordagem: "onde o cliente escolhe os doces e tamanhos e já manda o pedido pronto direto pro WhatsApp de vocês"
   },
 
   petshop: {
     titulo: "Pet Shop / Estética Animal & Clínica Veterinária",
-    publico: "Tutores de pets que tratam seus animais como membros da família e priorizam segurança, carinho e transparência nos serviços.",
-    direcaoArte: "Direção visual amigável, confiável e contemporânea, equilibrando limpeza clínica com calor humano, ícones personalizados, cards com cantos arredondados e hierarquia visual clara.",
-    tipografia: "Fonte amigável e moderna com excelente legibilidade (ex: Plus Jakarta Sans ou Outfit para títulos + Inter para textos e seletores).",
-    arquitetura: `1. Header Acolhedor e Objetivo: Logo, navegação (Serviços, Diferenciais, Dúvidas, Localização) e CTA direto "Agendar Horário".
-2. Hero Section de Confiança: Título focado no bem-estar e cuidado sem estresse para o pet, subtítulo tranquilizador para o tutor, CTA principal e composição visual calorosa.
-3. Configurador Interativo de Serviços Pet: O tutor seleciona o porte do pet (Pequeno, Médio, Grande) e marca os serviços desejados (Banho, Tosa Higiênica, Tosa na Tesoura, Hidratação, Consulta) em cards interativos com feedback visual.
-4. Barra de Agendamento Rápido: Gera automaticamente o resumo do porte e serviços escolhidos e abre o WhatsApp com a solicitação de horário pronta.
-5. Pilares de Cuidado (Diferenciais): Grid estruturado mostrando produtos hipoalergênicos, ambiente monitorado e manejo carinhoso.
-6. Perguntas Frequentes (FAQ) em Accordion & Footer: Respostas rápidas sobre vacinas, tempo de banho e táxi dog, seguidas pelo rodapé com endereço e horário.`,
-    diferencialCriativo: "Simulador de Atendimento por Porte do Pet: permite que o tutor selecione o tamanho do animal e combine serviços de estética ou saúde em segundos antes de chamar no WhatsApp.",
+    publico: "Tutores cuidadosos que buscam segurança, transparência no manejo e facilidade para agendar banho, tosa ou consulta sem espera.",
+    conceitoCriativo: "Cuidado Contemporâneo & Clareza Funcional: fugir dos sites infantis cheios de patinhas e cores saturadas aleatórias, adotando uma identidade acolhedora, limpa e organizada como um estúdio moderno de bem-estar animal.",
+    direcaoArte: "Design modular limpo com tons orgânicos suaves e um ponto de contraste vibrante para ação. Geometria bem definida (cantos discretos de 6px–8px), hierarquia tipográfica clara e ausência de poluição visual.",
+    tipografia: "Sans-serif geométrica amigável e firme para títulos (ex: Outfit ou Plus Jakarta Sans SemiBold) combinada com Inter para seletores e textos explicativos.",
+    secoesDetalhadas: `1. Header Objetivo: Logotipo, navegação limpa (Serviços, Protocolo de Cuidado, Dúvidas, Localização) e botão retangular "Agendar Horário".
+2. Hero Section Dividida com Propósito: Headline clara sobre cuidado sem estresse e transparência no atendimento, subtítulo acolhedor, CTA principal e fotografia natural de alta qualidade (tutor/pet ou cuidado estético) integrada à composição.
+3. Configurador Interativo por Porte do Pet: Seção funcional dividida em 2 passos visuais — primeiro o tutor seleciona o porte (Pequeno, Médio, Grande) e depois marca os serviços desejados (Banho, Tosa Higiênica, Tosa na Tesoura, Hidratação, Avaliação Clínica) em blocos selecionáveis com estado ativo nítido.
+4. Protocolo de Bem-Estar (Numeração Editorial): 3 blocos horizontais numerados (01. Recepção Calma, 02. Produtos Hipoalergênicos, 03. Manejo Individualizado) substituindo cards repetitivos.
+5. FAQ em Accordion & Footer Completo: Respostas diretas sobre carteira de vacinação, tempo médio e transporte, seguidas pelo rodapé com mapa/endereço e barra fixa de agendamento no WhatsApp.`,
+    tratamentoImagens: "Fotografias naturais e expressivas de cães e gatos bem cuidados, com iluminação limpa e sem montagens artificiais.",
+    diferencialCriativo: "Simulador de Atendimento por Porte: o tutor configura o porte do animal e os serviços antes de abrir o WhatsApp, entregando a solicitação pronta para a recepção confirmar o horário.",
     abordagem: "onde o tutor escolhe o porte do pet, marca banho ou tosa e já manda o agendamento pronto pro WhatsApp de vocês"
   },
 
   estetica: {
     titulo: "Clínica de Estética / Salão / Barbearia / Estúdio",
-    publico: "Público atento à imagem pessoal, autoestima e qualidade técnica, que valoriza ambientes modernos e agendamento sem burocracia.",
-    direcaoArte: "Direção de arte de alto padrão, sofisticada e autoral, com grids assimétricos, microinterações fluidas, iluminação sutil, alto contraste e sensação de exclusividade de estúdio boutique.",
-    tipografia: "Tipografia de alto contraste e elegância contemporânea (ex: Syne, Cormorant ou Montserrat SemiBold para títulos + Inter para leitura fluida).",
-    arquitetura: `1. Header Minimalista Premium: Logotipo refinado, links de navegação suave e CTA "Reservar Horário".
-2. Hero Section Editorial: Headline magnética focada em transformação e autoestima, subtítulo direto, CTA de agendamento e composição visual impactante com camadas e profundidade.
-3. Menu Interativo de Procedimentos: Lista categorizada onde o cliente pode selecionar um ou mais serviços/procedimentos (com duração média e descrição clara do benefício) para montar seu atendimento.
-4. Resumo de Reserva Direta: Barra ou card lateral que reúne os procedimentos marcados e envia a solicitação formatada direto para o WhatsApp da recepção.
-5. Galeria Visual / Portfólio do Espaço: Grid moderno apresentando o ambiente, equipamentos e padrão de acabamento (usando imagens ilustrativas coerentes com o segmento, sem falsos resultados).
-6. Protocolo de Atendimento & Footer: Passo a passo da experiência do cliente, endereço completo, horário e botão flutuante de WhatsApp.`,
-    diferencialCriativo: "Monte Seu Atendimento: experiência interativa estilo boutique onde o visitante combina procedimentos e dispara a pré-reserva formatada direto para o WhatsApp.",
+    publico: "Clientes atentos à imagem pessoal, acabamento técnico e experiência exclusiva, que valorizam agilidade e sofisticação.",
+    conceitoCriativo: "Direção Editorial de Estúdio Boutique: layout inspirado em publicações de moda, beleza e arquitetura contemporânea, com grids assimétricos, tipografia de alto contraste e ritmo visual sofisticado.",
+    direcaoArte: "Minimalismo autoral com personalidade marcante. Uso intencional de espaço negativo, contrastes entre blocos claros e escuros, linhas finas divisórias, bordas retas (0px a 4px) e zero excesso de sombras ou efeitos genéricos.",
+    tipografia: "Títulos expressivos de grande escala (ex: Syne, Cormorant ou Montserrat Bold com tracking controlado) pareados com Inter ou DM Sans para especificações técnicas.",
+    secoesDetalhadas: `1. Header Minimalista: Identidade visual limpa, links de âncora suaves e CTA retangular "Reservar Horário".
+2. Hero Section Editorial Assimétrica: Título de grande escala com quebra intencional de linhas, fotografia vertical expressiva deslocada no grid, proposta de valor objetiva e CTA direto.
+3. Menu Interativo de Procedimentos (Estilo Editorial): Lista categorizada com divisórias finas onde o cliente pode selecionar múltiplos procedimentos (vendo descrição técnica e duração média) para montar sua sessão.
+4. Galeria Arquitetônica / Visual: Módulos de diferentes proporções apresentando a atmosfera do estúdio e o padrão de cuidado (imagens ilustrativas coerentes, sem alegações falsas).
+5. Experiência de Atendimento: 3 etapas horizontais explicando avaliação personalizada, execução técnica e pós-atendimento.
+6. Barra de Pré-Reserva & Footer: Resumo discreto dos procedimentos selecionados com botão que dispara o agendamento formatado no WhatsApp, acompanhado de endereço e horários.`,
+    tratamentoImagens: "Fotografias editoriais com composição limpa, luz natural ou de estúdio bem controlada, recortes verticais e horizontais assimétricos.",
+    diferencialCriativo: "Curadoria de Sessão Interativa: o visitante combina os procedimentos desejados diretamente no menu editorial e envia a pré-reserva estruturada para o WhatsApp.",
     abordagem: "onde o cliente vê os procedimentos, seleciona o que deseja fazer e já chama no WhatsApp com o agendamento pronto"
   },
 
   saude: {
     titulo: "Consultório Odontológico / Psicologia / Clínica de Saúde",
-    publico: "Pacientes em busca de profissionais qualificados, acolhimento humanizado, clareza nos tratamentos e facilidade para agendar consulta.",
-    direcaoArte: "Estética médica/terapêutica contemporânea, transmite serenidade, autoridade técnica e transparência. Uso inteligente de espaços em branco, superfícies limpas, bordas sutis e contraste impecável para leitura.",
-    tipografia: "Combinação que equilibra autoridade e acolhimento (ex: Plus Jakarta Sans ou Lora para títulos + Inter para textos informativos).",
-    arquitetura: `1. Header Institucional Limpo: Identidade do consultório/profissional, navegação clara (Tratamentos, Sobre, Dúvidas, Localização) e botão de destaque "Agendar Consulta".
-2. Hero Section de Autoridade: Título focado em saúde, bem-estar e atendimento humanizado, descrição objetiva do propósito do consultório, CTA principal para WhatsApp e composição visual serena.
-3. Especialidades e Tratamentos: Cards organizados em grid limpo, explicando de forma acessível cada especialidade, sintomas/indicações e como funciona a primeira avaliação.
-4. Abordagem e Estrutura (Diferenciais): Seção que destaca atendimento individualizado, tecnologia/conforto do espaço e ética profissional (sem inventar números ou certificados).
-5. FAQ Interativo (Accordion): Dúvidas comuns sobre primeira consulta, convênios/reembolso e preparo para o atendimento.
-6. Seção Final de Agendamento & Footer: Chamada acolhedora para iniciar o atendimento pelo WhatsApp, endereço com referência e horários.`,
-    diferencialCriativo: "Triagem Rápida de Primeira Consulta: seletor intuitivo onde o paciente escolhe a especialidade ou motivo do contato e inicia a conversa no WhatsApp já direcionado para o tipo de atendimento.",
+    publico: "Pacientes que buscam acolhimento humanizado, clareza técnica sobre tratamentos e facilidade para agendar a primeira consulta.",
+    conceitoCriativo: "Arquitetura Clínica Contemporânea: transmitir serenidade, rigor técnico e acolhimento sem parecer um site hospitalar frio ou um template genérico.",
+    direcaoArte: "Design minimalista com personalidade e calor humano. Superfícies em tons naturais suaves (areia, branco gelo, cinza pedra), tipografia de alta legibilidade, divisórias precisas e bordas discretas (4px).",
+    tipografia: "Serifada humanista suave ou sans-serif editorial para títulos (ex: Lora ou Plus Jakarta Sans) combinada com Inter para textos informativos.",
+    secoesDetalhadas: `1. Header Institucional Limpo: Identidade do consultório, navegação clara (Especialidades, Abordagem, Dúvidas, Localização) e botão de destaque "Agendar Consulta".
+2. Hero Section de Autoridade Serena: Composição equilibrada com título focado em saúde e atendimento individualizado, descrição clara, botão de agendamento no WhatsApp e fotografia natural do ambiente/atendimento.
+3. Especialidades em Módulos Assimétricos: Apresentação clara de cada área de atuação, explicando para quem é indicado e como funciona a primeira avaliação, com opção de selecionar o motivo do contato.
+4. Pilares do Atendimento: Grid limpo destacando escuta ativa, planejamento individualizado e conforto estrutural (sem estatísticas ou certificações inventadas).
+5. Perguntas Frequentes (Accordion) & Localização: Dúvidas práticas sobre primeira consulta e preparo, seguidas por bloco de endereço, horários e CTA direto para WhatsApp.`,
+    tratamentoImagens: "Fotografias claras, naturais e acolhedoras que transmitam confiança e tranquilidade.",
+    diferencialCriativo: "Triagem Inteligente de Primeira Consulta: o paciente seleciona a especialidade ou necessidade antes de clicar no WhatsApp, iniciando a conversa já direcionado.",
     abordagem: "para transmitir ainda mais credibilidade no Google e facilitar o agendamento de pacientes direto no WhatsApp"
   },
 
   automotivo: {
     titulo: "Estética Automotiva / Detailer / Oficina Especializada",
-    publico: "Proprietários de veículos apaixonados por carros ou que buscam proteção, valorização e manutenção confiável para seu automóvel.",
-    direcaoArte: "Visual tecnológico, preciso e de alta performance, com superfícies escuras sofisticadas, detalhes metálicos ou luminosos sutis, grids geométricos e sensação de precisão técnica.",
-    tipografia: "Tipografia geométrica forte e técnica para títulos (ex: Space Grotesk ou Outfit Bold) combinada com fonte limpa para especificações (ex: Inter).",
-    arquitetura: `1. Header Técnico: Logotipo em destaque, links (Serviços, Pacotes, Processo, Contato) e CTA "Solicitar Orçamento".
-2. Hero Section de Performance: Headline impactante sobre proteção, brilho e cuidado técnico automotivo, subtítulo objetivo, CTA direto e composição visual marcante.
-3. Monte Seu Pacote Automotivo (Interativo): Checkboxes visuais onde o motorista escolhe o tipo de veículo (Hatch, Sedan, SUV/Picape) e marca os serviços desejados (Lavagem Detalhada, Polimento Técnico, Vitrificação, Higienização Interna).
-4. Gerador de Orçamento WhatsApp: Compila o porte do veículo e os serviços escolhidos em uma mensagem técnica pronta para envio direto no WhatsApp.
-5. Etapas do Processo Técnico: Linha do tempo visual mostrando inspeção, preparação, execução e acabamento final.
-6. Footer Completo: Localização de fácil acesso, horário de funcionamento e canal rápido de WhatsApp.`,
-    diferencialCriativo: "Configurador de Estética Automotiva: permite ao cliente selecionar a categoria do veículo e combinar serviços de detalhamento, gerando um pedido de orçamento estruturado no WhatsApp.",
+    publico: "Proprietários de veículos que buscam proteção, precisão técnica e transparência no orçamento de cuidados automotivos.",
+    conceitoCriativo: "Engenharia & Precisão Visual: estética inspirada em design industrial e automotivo contemporâneo, com grids geométricos rigorosos, tipografia técnica e contrastes bem definidos.",
+    direcaoArte: "Design corporativo/técnico contemporâneo. Fundos escuros foscos ou grafite industrial com superfícies delimitadas por bordas finas (1px), cantos retos (2px–4px), numeração técnica e ausência de gradientes exagerados.",
+    tipografia: "Sans-serif geométrica/técnica para títulos (ex: Space Grotesk ou Outfit Bold) combinada com Inter para especificações e itens de orçamento.",
+    secoesDetalhadas: `1. Header Técnico: Logotipo em destaque, links rápidos (Serviços, Configurador, Processo, Contato) e botão "Solicitar Orçamento".
+2. Hero Section de Alto Contraste: Fotografia automotiva de detalhe ocupando grande área visual, acompanhada de título técnico direto, proposta de valor e CTA para montar pacote.
+3. Configurador de Pacote Automotivo: O motorista seleciona o porte do veículo (Hatch, Sedan, SUV/Picape) e marca os serviços desejados (Lavagem Detalhada, Polimento Técnico, Vitrificação, Higienização Interna) com feedback visual nítido.
+4. Processo Técnico em 4 Etapas Horizontais: Inspeção, Descontaminação, Execução e Acabamento apresentados em sequência modular numerada.
+5. Barra de Orçamento Direto & Footer: Compila o tipo de veículo e os serviços escolhidos em uma mensagem pronta para o WhatsApp, seguido por endereço e horários.`,
+    tratamentoImagens: "Fotografias automotivas com foco em reflexo de pintura, acabamento interno e precisão técnica, integradas ao grid.",
+    diferencialCriativo: "Configurador de Serviço por Categoria de Veículo: estrutura o orçamento técnico (porte + serviços) e envia pronto no WhatsApp.",
     abordagem: "onde o cliente escolhe o tipo de carro, marca os serviços desejados e já manda o orçamento pronto no WhatsApp de vocês"
   },
 
   outro: {
-    titulo: "Negócio Local / Prestação de Serviços Especializados",
-    publico: "Clientes locais que pesquisam soluções confiáveis na região e preferem atendimento rápido e transparente pelo WhatsApp.",
-    direcaoArte: "Design contemporâneo de estúdio digital, layout limpo em bento-grid, hierarquia visual forte, contraste equilibrado, microinterações sutis e foco total em clareza e conversão.",
-    tipografia: "Combinação moderna e versátil (ex: Plus Jakarta Sans para títulos + Inter para textos e botões).",
-    arquitetura: `1. Header Profissional: Logotipo, menu de navegação enxuto e botão de contato rápido.
-2. Hero Section Estratégica: Headline clara comunicando a proposta de valor da empresa, subtítulo objetivo, CTA principal e composição visual moderna com camadas.
-3. Apresentação dos Serviços / Soluções: Cards interativos detalhando o que a empresa resolve, com opção para o visitante selecionar os itens de interesse.
-4. Diferenciais Competitivos: Grid destacando agilidade, atendimento personalizado, qualidade técnica e compromisso com o cliente.
-5. Jornada de Atendimento (Como Funciona): 3 passos visuais simples (Contato -> Orçamento/Planejamento -> Execução).
-6. Seção de Conversão & Footer: Chamada final persuasiva direcionando para o WhatsApp com mensagem pré-preenchida, endereço, horários e botão flutuante.`,
-    diferencialCriativo: "Seletor Interativo de Interesse: o visitante marca exatamente qual serviço ou solução precisa antes de clicar no botão do WhatsApp, tornando o primeiro contato comercial muito mais objetivo.",
+    titulo: "Negócio Local / Serviços Especializados",
+    publico: "Clientes locais que procuram atendimento confiável, rápido e transparente na região.",
+    conceitoCriativo: "Estúdio Digital Modular: layout editorial contemporâneo com grids assimétricos, tipografia expressiva e hierarquia visual clara.",
+    direcaoArte: "Composições modulares com alternância intencional de fundos claros e escuros, bordas retas ou discretamente arredondadas (4px), linhas divisórias estruturais e zero aparência de template genérico.",
+    tipografia: "Combinação contrastante entre display moderno para títulos (ex: Plus Jakarta Sans Bold ou Syne) e Inter para leitura fluida.",
+    secoesDetalhadas: `1. Header Compacto: Logotipo, navegação enxuta e CTA direto.
+2. Hero Section Assimétrica: Título específico sobre a solução entregue pela empresa, subtítulo objetivo, CTA principal e composição visual forte.
+3. Apresentação dos Serviços em Layout Modular: Blocos de proporções variadas detalhando os serviços com opção interativa de seleção de interesse.
+4. Diferenciais & Processo de Atendimento: Sequência numerada (01, 02, 03) mostrando como funciona o atendimento do primeiro contato à entrega.
+5. Conversão & Footer Completo: Chamada final objetiva direcionando para o WhatsApp com os serviços marcados, endereço e horários.`,
+    tratamentoImagens: "Fotografias naturais e profissionais coerentes com o segmento, integradas à estrutura visual sem excesso de molduras.",
+    diferencialCriativo: "Seletor de Interesse Integrado: permite ao visitante marcar o serviço desejado antes de abrir o WhatsApp, acelerando o fechamento.",
     abordagem: "para apresentar o trabalho de vocês com profissionalismo e levar clientes direto para o WhatsApp"
   }
 };
@@ -233,7 +243,7 @@ function renderizarLeads() {
 }
 
 // ==========================================
-// 5. GERADOR DE PROMPT DE ALTO IMPACTO
+// 5. GERADOR DE PROMPT DE ESTÚDIO (17 PONTOS)
 // ==========================================
 function selecionarLead(id) {
   leadSelecionado = leads.find((l) => l.id === id);
@@ -246,42 +256,70 @@ function selecionarLead(id) {
 
   const config = NICHOS_CONFIG[leadSelecionado.nichoKey] || NICHOS_CONFIG.outro;
   const segmentoCompleto = leadSelecionado.customNicho
-    ? `${config.titulo} — Especialidade/Foco: ${leadSelecionado.customNicho}`
+    ? `${config.titulo} (Especialidade: ${leadSelecionado.customNicho})`
     : config.titulo;
 
-  const paletaInstrucao = leadSelecionado.cor
-    ? `Utilize prioritariamente as cores "${leadSelecionado.cor}" como identidade principal da marca, construindo uma paleta complementar harmônica (cores de superfície, neutras de suporte e cor de destaque para CTAs) com contraste WCAG adequado.`
-    : `Desenvolva uma paleta de cores autoral, harmônica e coerente com o segmento de ${segmentoCompleto}, equilibrando fundo, superfícies de cards, tipografia legível e uma cor de destaque estratégica para botões de conversão.`;
+  const paletaTexto = leadSelecionado.cor
+    ? `Utilize prioritariamente as cores "${leadSelecionado.cor}" como identidade da marca, construindo uma paleta complementar com superfícies neutras, contrastes nítidos entre seções e uma cor de destaque estratégica para ações principais, sem gradientes gratuitos.`
+    : `Desenvolva uma paleta de cores autoral e coerente com o universo de ${segmentoCompleto}, alternando fundos claros e escuros ou tons naturais com contraste elevado e uma cor de destaque pontual para CTAs.`;
 
-  const promptTexto = `Atue como um Diretor Criativo Digital e Engenheiro Front-end Sênior. Desenvolva uma Landing Page demonstrativa de alto impacto, responsiva (mobile-first) e totalmente funcional em Português (PT-BR) para a empresa "${leadSelecionado.nome}".
+  const promptTexto = `Atue como um Diretor de Arte Digital, Senior UI/UX Designer e Engenheiro Front-end Sênior de um estúdio de design premiado. Desenvolva uma Landing Page demonstrativa completa, responsiva (mobile-first) e totalmente funcional em Português (PT-BR) para a empresa "${leadSelecionado.nome}".
 
-1. CONTEXTUALIZAÇÃO E OBJETIVO ESTRATÉGICO
+1. CONTEXTO E DESCRIÇÃO DO NEGÓCIO
 - Empresa: ${leadSelecionado.nome}
 - Segmento: ${segmentoCompleto}
+- Natureza do projeto: Site demonstrativo de alto nível criado para apresentar o posicionamento digital ideal da marca e converter visitantes em clientes reais.
+
+2. OBJETIVO PRINCIPAL DO SITE
+- Impressionar o proprietário e os clientes logo na primeira dobra com uma direção de arte autoral, transmitir autoridade imediata e conduzir o visitante de forma natural até o envio de pedido/agendamento estruturado no WhatsApp (55${leadSelecionado.whatsapp}).
+
+3. PÚBLICO-ALVO E POSICIONAMENTO
 - Público-alvo: ${config.publico}
-- Objetivo comercial: Criar uma prévia visual e funcional de nível de estúdio que demonstre profissionalismo imediato, valorize a marca e converta visitantes em atendimentos diretos via WhatsApp (55${leadSelecionado.whatsapp}).
+- Posicionamento: Marca bem estruturada, confiável e contemporânea, distante de soluções amadoras ou genéricas.
 
-2. DIREÇÃO DE ARTE E IDENTIDADE VISUAL
-- Personalidade visual: ${config.direcaoArte}
-- Paleta de cores: ${paletaInstrucao}
-- Tipografia: ${config.tipografia} Aplique hierarquia clara entre headlines, subtítulos, labels e corpo de texto.
-- Composição: Utilize grids modernos (bento-grid ou assimétricos), espaçamento negativo generoso, camadas com profundidade sutil e zero aparência de template genérico.
+4. CONCEITO CRIATIVO ESCOLHID0
+- ${config.conceitoCriativo}
 
-3. ARQUITETURA E DESCRIÇÃO VISUAL DAS SEÇÕES
-${config.arquitetura}
+5. DIREÇÃO DE ARTE
+- ${config.direcaoArte}
+- Trabalhe com composições assimétricas, ritmo visual entre seções, uso intencional de espaços vazios, divisórias finas e alternância de proporções.
 
-4. DIFERENCIAL CRIATIVO E INTERATIVIDADE
+6. IDENTIDADE VISUAL E PALETA DE CORES
+- ${paletaTexto}
+
+7. TIPOGRAFIA
+- ${config.tipografia}
+- Explore escala expressiva nos títulos principais, hierarquia clara entre títulos, subtítulos e corpo, mantendo contraste e leitura confortáveis.
+
+8. ARQUITETURA COMPLETA E DESCRIÇÃO VISUAL DAS SEÇÕES
+${config.secoesDetalhadas}
+
+9. TRATAMENTO E POSICIONAMENTO DAS IMAGENS
+- ${config.tratamentoImagens}
+
+10. DIFERENCIAL CRIATIVO E ELEMENTOS INTERATIVOS
 - ${config.diferencialCriativo}
-- Recursos de UI/UX: Adicione microinterações suaves em botões e cards (hover/active states), transições fluidas, feedback visual imediato nas seleções do usuário e animações discretas ao rolar a página, sem comprometer a velocidade ou a usabilidade.
+- Utilize microinterações precisas (estados de hover, seleção ativa, transições suaves de 200ms) que reforcem a sensação de acabamento artesanal sem prejudicar a velocidade.
 
-5. ESTRATÉGIA DE CONVERSÃO (WHATSAPP)
-- Todos os fluxos de conversão devem direcionar para o número oficial https://wa.me/55${leadSelecionado.whatsapp} utilizando encodeURIComponent() para gerar uma mensagem clara, educada e já preenchida com as escolhas feitas pelo visitante na página.
-- Posicione CTAs de forma natural ao longo da jornada, sem poluir a tela.
+11. EXPERIÊNCIA DO USUÁRIO (UX)
+- Navegação intuitiva, hierarquia de informação escaneável, feedback imediato ao selecionar itens/serviços e textos naturais e específicos para ${segmentoCompleto} (jamais use clichês como "Transformando sonhos" ou "Elevando ao próximo nível").
 
-6. RESPONSIVIDADE E CRITÉRIOS DE QUALIDADE
-- Reorganize grids, tipografia e navegação especialmente para smartphones (onde ocorre a maioria dos acessos via link de WhatsApp), garantindo áreas de toque confortáveis e leitura perfeita.
-- Utilize código limpo, semântico e sem elementos quebrados.
-- Utilize imagens ilustrativas de alta qualidade e coerentes com o segmento (via Unsplash ou placeholders elegantes), sem inventar depoimentos falsos, certificações inexistentes ou números fictícios sobre a empresa.`;
+12. ESTRATÉGIA DE CONVERSÃO (WHATSAPP)
+- Todos os botões de conversão devem direcionar para https://wa.me/55${leadSelecionado.whatsapp} utilizando encodeURIComponent() para preencher automaticamente uma mensagem clara com os itens ou serviços escolhidos pelo visitante na página.
+
+13. RESPONSIVIDADE COM QUALIDADE DE DESIGN
+- Reorganize grids assimétricos, tipografia e controles interativos para smartphones, garantindo áreas de toque confortáveis (mínimo 44px) e preservação total da identidade visual no mobile.
+
+14. ORIENTAÇÕES TÉCNICAS E CRITÉRIOS DE QUALIDADE
+- Código limpo, semântico, componentizado e 100% funcional (todos os botões, filtros, cálculos e links do WhatsApp devem operar sem erros).
+- Carregamento rápido e imagens otimizadas.
+
+15. PROIBIÇÕES ESTRITAS (FUJA DO DESIGN GENÉRICO DE IA)
+- NÃO crie Hero Sections genéricas excessivamente centralizadas com efeitos luminosos aleatórios.
+- NÃO repita o mesmo padrão de 3 ou 4 cards arredondados em todas as seções.
+- NÃO transforme todos os botões em cápsulas (pill buttons).
+- NÃO aplique glassmorphism indiscriminado, gradientes sem propósito ou sombras pesadas.
+- NÃO invente depoimentos, avaliações, estatísticas, prêmios ou certificações fictícias sobre a empresa "${leadSelecionado.nome}".`;
 
   document.getElementById("outputPrompt").value = promptTexto;
   atualizarMensagem();
