@@ -159,17 +159,20 @@ const NICHOS_CONFIG = {
 function abrirBusca(tipo) {
   const nicho = document.getElementById("searchNicho").value.trim();
   const cidade = document.getElementById("searchCidade").value.trim();
+  const bairro = document.getElementById("searchBairro").value.trim();
 
   if (!nicho || !cidade) {
-    alert("Preencha o Nicho e a Cidade primeiro!");
+    alert("Preencha pelo menos o Nicho e a Cidade!");
     return;
   }
 
   let query = "";
   if (tipo === "maps") {
-    query = `https://www.google.com/maps/search/${encodeURIComponent(nicho + " " + cidade)}`;
+    const localMaps = bairro ? `${nicho} ${bairro}, ${cidade}` : `${nicho} ${cidade}`;
+    query = `https://www.google.com/maps/search/${encodeURIComponent(localMaps)}`;
   } else {
-    const operador = `"${nicho}" site:${tipo} "${cidade}"`;
+    const filtroBairro = bairro ? ` "${bairro}"` : "";
+    const operador = `"${nicho}" site:${tipo} "${cidade}"${filtroBairro}`;
     query = `https://www.google.com/search?q=${encodeURIComponent(operador)}`;
   }
 

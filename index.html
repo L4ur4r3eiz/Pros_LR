@@ -33,15 +33,20 @@
       <!-- Card 1: Gerador de Busca -->
       <div class="card">
         <h2>1. Garimpar Clientes</h2>
-        <div class="form-row">
+       <div class="form-row">
           <div class="field">
-            <label for="searchNicho">Nicho</label>
-            <input type="text" id="searchNicho" placeholder="Ex: Hamburgueria, Pet Shop" />
+            <label for="searchNicho">Nicho *</label>
+            <input type="text" id="searchNicho" placeholder="Ex: Hamburgueria, Estética" />
           </div>
           <div class="field">
-            <label for="searchCidade">Cidade</label>
-            <input type="text" id="searchCidade" placeholder="Ex: Ribeirão Pires" />
+            <label for="searchCidade">Cidade *</label>
+            <input type="text" id="searchCidade" placeholder="Ex: São Paulo" />
           </div>
+        </div>
+
+        <div class="field" style="margin-top: 10px;">
+          <label for="searchBairro">Bairro / Região (Opcional — para filtrar bairros nobres)</label>
+          <input type="text" id="searchBairro" placeholder="Ex: Morumbi, Moema, Jardins, Pinheiros" />
         </div>
 
         <div class="search-buttons">
