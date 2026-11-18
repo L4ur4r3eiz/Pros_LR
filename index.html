@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- TELA DE BLOQUEIO -->
+  <!-- TELA DE BLOQUEIO -->
   <div id="lockScreen" class="lock-screen">
     <div class="lock-card">
-      <h2> <span>LR</span></h2>
+      <h2>Prospecta <span>LP</span></h2>
       <p>Área restrita • Digite sua senha</p>
       <form id="unlockForm" class="stack-sm">
         <input type="password" id="passwordInput" placeholder="Sua senha..." required autofocus />
@@ -23,7 +23,7 @@
   <header class="topbar">
     <div class="container topbar-content">
       <h1>Prospecta <span>LP</span></h1>
-      <p>Garimpo rápido, prompt inteligente por nicho e abordagem no WhatsApp</p>
+      <p>Garimpo por região, prompt de estúdio e abordagem focada na dor</p>
     </div>
   </header>
 
@@ -33,10 +33,10 @@
       <!-- Card 1: Gerador de Busca -->
       <div class="card">
         <h2>1. Garimpar Clientes</h2>
-       <div class="form-row">
+        <div class="form-row">
           <div class="field">
             <label for="searchNicho">Nicho *</label>
-            <input type="text" id="searchNicho" placeholder="Ex: Hamburgueria, Estética" />
+            <input type="text" id="searchNicho" placeholder="Ex: Pet Shop, Estética" />
           </div>
           <div class="field">
             <label for="searchCidade">Cidade *</label>
@@ -45,8 +45,8 @@
         </div>
 
         <div class="field" style="margin-top: 10px;">
-          <label for="searchBairro">Bairro / Região (Opcional — para filtrar bairros nobres)</label>
-          <input type="text" id="searchBairro" placeholder="Ex: Morumbi, Moema, Jardins, Pinheiros" />
+          <label for="searchBairro">Bairro / Região (Opcional)</label>
+          <input type="text" id="searchBairro" placeholder="Ex: Morumbi, Moema, Jardins" />
         </div>
 
         <div class="search-buttons">
@@ -64,7 +64,7 @@
 
       <!-- Card 2: Salvar Lead -->
       <div class="card">
-        <h2>2. Adicionar Lead Encontrado</h2>
+        <h2>2. Adicionar Lead e Identificar Dor</h2>
         <form id="leadForm" class="stack-sm">
           <div class="form-row">
             <div class="field">
@@ -85,6 +85,16 @@
             </div>
           </div>
 
+          <div class="field">
+            <label for="leadDor">Principal Problema / Dor Encontrada *</label>
+            <select id="leadDor" required>
+              <option value="sem_site">Não tem site (só aparece no Maps/Instagram sem página)</option>
+              <option value="so_linktree">Usa só Linktree / lista simples de links na bio</option>
+              <option value="site_fraco">Tem um site fraco, lento ou desatualizado</option>
+              <option value="atendimento_lento">Atendimento manual no WhatsApp sem cardápio/tabela</option>
+            </select>
+          </div>
+
           <div class="form-row">
             <div class="field">
               <label for="leadWhatsapp">WhatsApp (com DDD) *</label>
@@ -97,11 +107,11 @@
           </div>
 
           <div class="field">
-            <label for="leadCustomNicho">Detalhe extra (opcional — ex: "Banho e Tosa", "Smash Burger")</label>
-            <input type="text" id="leadCustomNicho" placeholder="Deixe em branco para usar o padrão do nicho" />
+            <label for="leadCustomNicho">Observação específica (Opcional — ex: "não tem tabela de banho")</label>
+            <input type="text" id="leadCustomNicho" placeholder="Ajuda a deixar a abordagem ainda mais real" />
           </div>
 
-          <button type="submit" class="btn btn-primary">+ Salvar Lead na Lista</button>
+          <button type="submit" class="btn btn-primary">+ Salvar Lead e Gerar Estratégia</button>
         </form>
       </div>
     </section>
@@ -118,34 +128,48 @@
         </div>
       </div>
 
-      <!-- Card 4: Gerador de Prompt e Mensagem -->
+      <!-- Card 4: Gerador de Abordagem e Prompt -->
       <div class="card" id="generatorBox" style="display: none;">
-        <h2 id="selectedLeadTitle">Gerador para: —</h2>
+        <h2 id="selectedLeadTitle">Estratégia para: —</h2>
 
+        <!-- Bloco 1: 1ª Mensagem (Sem link, direto na dor) -->
         <div class="field">
-          <label>Prompt Universal (para qualquer IA criar o site)</label>
-          <textarea id="outputPrompt" rows="9" readonly></textarea>
+          <label>1ª Mensagem WhatsApp (Curta, humana, sem link e direto na dor)</label>
+          <textarea id="outputMensagem" rows="6" readonly></textarea>
+          <div class="action-row">
+            <button type="button" class="btn btn-outline btn-sm" onclick="copiarTexto('outputMensagem', this)">
+              📋 Copiar 1ª Mensagem
+            </button>
+            <a id="btnAbrirWhats" href="#" target="_blank" class="btn btn-whatsapp btn-sm">
+              💬 Enviar 1ª Mensagem
+            </a>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Bloco 2: Prompt para criar a prévia -->
+        <div class="field">
+          <label>Prompt de Estúdio (Para gerar o site demonstrativo na IA)</label>
+          <textarea id="outputPrompt" rows="7" readonly></textarea>
           <button type="button" class="btn btn-primary btn-sm" onclick="copiarTexto('outputPrompt', this)">
-            📋 Copiar Prompt Completo
+            📋 Copiar Prompt do Site
           </button>
         </div>
 
         <hr class="divider" />
 
+        <!-- Bloco 3: 2ª Mensagem (Depois que o cliente responder) -->
         <div class="field">
-          <label for="previewLink">Cole aqui o link da prévia (depois de gerar)</label>
-          <input type="text" id="previewLink" placeholder="Ex: https://seu-site.vercel.app" oninput="atualizarMensagem()" />
-        </div>
-
-        <div class="field">
-          <label>Mensagem de Abordagem (WhatsApp)</label>
-          <textarea id="outputMensagem" rows="6" readonly></textarea>
+          <label for="previewLink">2ª Mensagem — Cole o link da prévia (envie só após ele responder)</label>
+          <input type="text" id="previewLink" placeholder="Ex: https://seu-site.vercel.app" oninput="atualizarMensagens()" />
+          <textarea id="outputMensagemLink" rows="4" readonly style="margin-top: 6px;"></textarea>
           <div class="action-row">
-            <button type="button" class="btn btn-outline btn-sm" onclick="copiarTexto('outputMensagem', this)">
-              📋 Copiar Mensagem
+            <button type="button" class="btn btn-outline btn-sm" onclick="copiarTexto('outputMensagemLink', this)">
+              📋 Copiar 2ª Mensagem
             </button>
-            <a id="btnAbrirWhats" href="#" target="_blank" class="btn btn-whatsapp btn-sm">
-              💬 Abrir WhatsApp
+            <a id="btnAbrirWhatsLink" href="#" target="_blank" class="btn btn-whatsapp btn-sm">
+              💬 Enviar Prévia
             </a>
           </div>
         </div>
