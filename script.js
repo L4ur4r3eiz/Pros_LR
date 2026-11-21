@@ -2,7 +2,7 @@
 // 1. SEGURANÇA (HASH SHA-256)
 // ==========================================
 // Senha padrão atual: "admin" — troque pelo hash SHA-256 da sua senha
-const SENHA_HASH = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+const SENHA_HASH = "a3afbad90a2b5393c995bd8f924c15e2c4a1a2417cef029d2eef2d47c06612c6";
 
 async function gerarHash(texto) {
   const encoder = new TextEncoder();
